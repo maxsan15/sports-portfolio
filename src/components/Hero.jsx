@@ -5,7 +5,7 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.content}>
         <p className={styles.tagline}>Sports Photography</p>
-        <h1 className={styles.title}>Maxed Out<br />Media</h1>
+        <h1 className={styles.title}>Santana<br />Studios</h1>
         <p className={styles.sub}>Capturing the moments that define the game.</p>
         <button
           className={styles.cta}
