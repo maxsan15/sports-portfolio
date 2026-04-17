@@ -6,13 +6,14 @@ export default function Gallery({ onImageClick }) {
   const [activeCategory, setActiveCategory] = useState('All')
 
   const categories = useMemo(() => {
-    const cats = ['All', ...new Set(photos.map(p => p.category))]
-    return cats
+    const dates = [...new Set(photos.map(p => p.date))]
+      .sort((a, b) => new Date(a) - new Date(b))
+    return ['All', ...dates]
   }, [])
 
   const filtered = useMemo(() => {
     if (activeCategory === 'All') return photos
-    return photos.filter(p => p.category === activeCategory)
+    return photos.filter(p => p.date === activeCategory)
   }, [activeCategory])
 
   return (
@@ -45,7 +46,7 @@ export default function Gallery({ onImageClick }) {
               loading="lazy"
             />
             <div className={styles.overlay}>
-              <span className={styles.category}>{photo.category}</span>
+              <span className={styles.category}>{photo.date}</span>
             </div>
           </div>
         ))}
