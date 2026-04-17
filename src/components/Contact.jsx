@@ -32,7 +32,7 @@ export default function Contact() {
           </p>
           <div className={styles.details}>
             <a href="mailto:your@email.com" className={styles.detail}>your@email.com</a>
-            <a href="https://instagram.com/maxedoutmedia" target="_blank" rel="noopener noreferrer" className={styles.detail}>@maxedoutmedia</a>
+            <a href="https://instagram.com/santanastudios" target="_blank" rel="noopener noreferrer" className={styles.detail}>@santanastudios</a>
           </div>
         </div>
 

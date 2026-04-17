@@ -8,7 +8,7 @@ export default function Nav({ solid }) {
   return (
     <nav className={`${styles.nav} ${solid ? styles.solid : ''}`}>
       <button className={styles.logo} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        Maxed Out Media
+        Santana Studios
       </button>
       <div className={styles.links}>
         <button onClick={() => scrollTo('gallery')}>Gallery</button>
