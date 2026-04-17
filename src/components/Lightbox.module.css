@@ -1,0 +1,59 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(20, 18, 16, 0.93);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  z-index: 10;
+  transition: color 0.2s;
+}
+
+.close:hover {
+  color: white;
+}
+
+.imgWrap {
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: scaleIn 0.25s ease;
+}
+
+.img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
