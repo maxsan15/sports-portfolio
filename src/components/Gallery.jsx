@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { PHOTO_SERVER } from '../data/photos.js'
 import styles from './Gallery.module.css'
 
@@ -8,14 +8,27 @@ export default function Gallery({ onImageClick }) {
   const [error, setError] = useState(false)
   const [activeShoot, setActiveShoot] = useState(null)
 
+  // useRef prevents the fetch from running twice in React StrictMode
+  const hasFetched = useRef(false)
+
   useEffect(() => {
+    if (hasFetched.current) return
+    hasFetched.current = true
+
     fetch(`${PHOTO_SERVER}/api/photos`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch')
         return res.json()
       })
       .then(data => {
-        setPhotos(data)
+        // Deduplicate by filename as a safety net against server returning duplicates
+        const seen = new Set()
+        const unique = data.filter(p => {
+          if (seen.has(p.filename)) return false
+          seen.add(p.filename)
+          return true
+        })
+        setPhotos(unique)
         setLoading(false)
       })
       .catch(() => {
