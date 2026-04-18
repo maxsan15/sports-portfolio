@@ -3,20 +3,19 @@ import styles from './Hero.module.css'
 
 // Full-screen splash section shown at the top of the page
 export default function Hero() {
-  // Holds the list of photos from the earliest shoot
+  // Holds all photos shuffled randomly across all shoots
   const [slides, setSlides] = useState([])
   // Index of the currently visible slide
   const [current, setCurrent] = useState(0)
 
-  // Fetch photos on mount, find the earliest shoot, and use those as slides
+  // Fetch all photos on mount, shuffle them randomly, and use those as slides
   useEffect(() => {
     fetch('https://photos.santanastudios.org/api/photos')
       .then(res => { if (!res.ok) throw new Error('Failed to fetch'); return res.json() })
       .then(data => {
-        // Sort all unique shoot dates chronologically and pick the earliest
-        const earliest = [...new Set(data.map(p => p.shoot))]
-          .sort((a, b) => new Date(a) - new Date(b))[0]
-        setSlides(data.filter(p => p.shoot === earliest))
+        // Shuffle all photos randomly so the slideshow pulls from every shoot
+        const shuffled = [...data].sort(() => Math.random() - 0.5)
+        setSlides(shuffled)
       })
       .catch(() => {}) // Silently fail — hero still renders without photos
   }, [])
