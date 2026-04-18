@@ -118,3 +118,25 @@
 @media (max-width: 480px) {
   .grid { columns: 1; }
 }
+
+.viewMore {
+  display: block;
+  margin: 2rem auto 0;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #dddddd;
+  border: 1px solid #444444;
+  padding: 0.85rem 2.5rem;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.viewMore:hover {
+  background: #dddddd;
+  color: #1a1a1a;
+  border-color: #dddddd;
+}

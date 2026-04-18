@@ -7,6 +7,7 @@ export default function Gallery({ onImageClick }) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [activeShoot, setActiveShoot] = useState(null)
+  const [showAll, setShowAll] = useState(false)
 
   // useRef prevents the fetch from running twice in React StrictMode
   const hasFetched = useRef(false)
@@ -43,6 +44,10 @@ export default function Gallery({ onImageClick }) {
     }
   }, [photos])
 
+  useEffect(() => {
+    setShowAll(false)
+  }, [activeShoot])
+
   const categories = useMemo(() => {
     return [...new Set(photos.map(p => p.shoot))]
   }, [photos])
@@ -50,6 +55,10 @@ export default function Gallery({ onImageClick }) {
   const filtered = useMemo(() => {
     return photos.filter(p => p.shoot === activeShoot)
   }, [activeShoot, photos])
+
+  const displayedPhotos = useMemo(() => {
+    return showAll ? filtered : filtered.slice(0, 6)
+  }, [filtered, showAll])
 
   return (
     <section id="gallery" className={styles.section}>
@@ -72,24 +81,31 @@ export default function Gallery({ onImageClick }) {
       {error && <p>Could not connect to photo server.</p>}
 
       {!loading && !error && (
-        <div className={styles.grid}>
-          {filtered.map((photo) => (
-            <div
-              key={photo.id}
-              className={styles.item}
-              onClick={() => onImageClick(photo)}
-            >
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                loading="lazy"
-              />
-              <div className={styles.overlay}>
-                <span className={styles.category}>{photo.shoot}</span>
+        <>
+          <div className={styles.grid}>
+            {displayedPhotos.map((photo) => (
+              <div
+                key={photo.id}
+                className={styles.item}
+                onClick={() => onImageClick(photo)}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                />
+                <div className={styles.overlay}>
+                  <span className={styles.category}>{photo.shoot}</span>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+          {!showAll && filtered.length > 6 && (
+            <button className={styles.viewMore} onClick={() => setShowAll(true)}>
+              View More ({filtered.length - 6} more photos)
+            </button>
+          )}
+        </>
       )}
     </section>
   )
