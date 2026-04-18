@@ -7,14 +7,14 @@
 }
 
 :root {
-  --white: #ffffff;
-  --off-white: #f8f8f6;
-  --gray-100: #f0eeeb;
-  --gray-200: #e2e0dc;
-  --gray-400: #a8a49e;
-  --gray-600: #6b6762;
-  --gray-800: #2d2b28;
-  --black: #141210;
+  --white: #1a1a1a;
+  --off-white: #222222;
+  --gray-100: #2a2a2a;
+  --gray-200: #333333;
+  --gray-400: #888888;
+  --gray-600: #aaaaaa;
+  --gray-800: #dddddd;
+  --black: #f0f0f0;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
   --nav-height: 64px;
@@ -26,8 +26,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--white);
-  color: var(--gray-800);
+  background: #1a1a1a;
+  color: #dddddd;
   font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

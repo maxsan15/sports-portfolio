@@ -3,8 +3,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.75rem 2.5rem;
-  border-top: 1px solid var(--gray-200);
-  background: var(--white);
+  border-top: 1px solid #333333;
+  background: #2a2a2a;
 }
 
 .name {

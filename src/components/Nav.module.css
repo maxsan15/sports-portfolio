@@ -14,8 +14,8 @@
 }
 
 .nav.solid {
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom-color: var(--gray-200);
+  background: rgba(40, 40, 40, 0.96);
+  border-bottom-color: #333333;
   backdrop-filter: blur(8px);
 }
 
