@@ -35,8 +35,7 @@ export default function Contact() {
           <p className={styles.label}>Get in Touch</p>
           <h2 className={styles.title}>Let's Work<br />Together</h2>
           <p className={styles.desc}>
-            Available for sporting events, team shoots,<br />
-            editorial assignments, and print licensing.
+            Available for sporting events.
           </p>
           {/* Direct contact links — update the email and Instagram handle as needed */}
           <div className={styles.details}>
