@@ -6,7 +6,7 @@ export default function Gallery({ onImageClick }) {
   const [photos, setPhotos] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-  const [activeCategory, setActiveCategory] = useState('All')
+  const [activeShoot, setActiveShoot] = useState(null)
 
   useEffect(() => {
     fetch(`${PHOTO_SERVER}/api/photos`)
@@ -24,15 +24,19 @@ export default function Gallery({ onImageClick }) {
       })
   }, [])
 
+  useEffect(() => {
+    if (photos.length > 0 && !activeShoot) {
+      setActiveShoot(photos[0].shoot)
+    }
+  }, [photos])
+
   const categories = useMemo(() => {
-    const shoots = [...new Set(photos.map(p => p.shoot))].sort()
-    return ['All', ...shoots]
+    return [...new Set(photos.map(p => p.shoot))]
   }, [photos])
 
   const filtered = useMemo(() => {
-    if (activeCategory === 'All') return photos
-    return photos.filter(p => p.shoot === activeCategory)
-  }, [activeCategory, photos])
+    return photos.filter(p => p.shoot === activeShoot)
+  }, [activeShoot, photos])
 
   return (
     <section id="gallery" className={styles.section}>
@@ -42,8 +46,8 @@ export default function Gallery({ onImageClick }) {
           {categories.map(cat => (
             <button
               key={cat}
-              className={`${styles.filter} ${activeCategory === cat ? styles.active : ''}`}
-              onClick={() => setActiveCategory(cat)}
+              className={`${styles.filter} ${activeShoot === cat ? styles.active : ''}`}
+              onClick={() => setActiveShoot(cat)}
             >
               {cat}
             </button>
@@ -56,10 +60,10 @@ export default function Gallery({ onImageClick }) {
 
       {!loading && !error && (
         <div className={styles.grid}>
-          {filtered.map((photo, index) => (
+          {filtered.map((photo) => (
             <div
               key={photo.id}
-              className={`${styles.item} ${index % 5 === 0 ? styles.wide : ''}`}
+              className={styles.item}
               onClick={() => onImageClick(photo)}
             >
               <img
