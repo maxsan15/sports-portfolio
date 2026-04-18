@@ -40,8 +40,8 @@ export default function Contact() {
           </p>
           {/* Direct contact links — update the email and Instagram handle as needed */}
           <div className={styles.details}>
-            <a href="mailto:your@email.com" className={styles.detail}>your@email.com</a>
-            <a href="https://instagram.com/santanastudios" target="_blank" rel="noopener noreferrer" className={styles.detail}>@santanastudios</a>
+            <a href="mailto:max@maximilliontech.com" className={styles.detail}>max@maximilliontech.com</a>
+            <a href="https://www.instagram.com/santanastudios.png/" target="_blank" rel="noopener noreferrer" className={styles.detail}>@santanastudios.png</a>
           </div>
         </div>
 

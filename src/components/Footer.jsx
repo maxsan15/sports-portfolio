@@ -12,7 +12,7 @@ export default function Footer() {
       <span className={styles.copy}>© {year} — All rights reserved</span>
       {/* Instagram link on the right — update the href if the handle changes */}
       <a
-        href="https://instagram.com/santanastudios"
+        href="https://www.instagram.com/santanastudios.png/"
         target="_blank"
         rel="noopener noreferrer" // Security best practice for external links
         className={styles.social}
