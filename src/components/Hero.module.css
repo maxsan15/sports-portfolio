@@ -37,6 +37,15 @@
   z-index: 1;
 }
 
+.textBox {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 2.5rem 3rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: inline-block;
+}
+
 .tagline {
   font-family: var(--font-body);
   font-size: 0.75rem;

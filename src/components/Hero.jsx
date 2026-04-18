@@ -44,18 +44,21 @@ export default function Hero() {
 
       {/* Hero text — sits above the slideshow via z-index */}
       <div className={styles.content}>
-        {/* Small label above the main title */}
-        <p className={styles.tagline}>Sports Photography</p>
-        {/* Main brand name */}
-        <h1 className={styles.title}>Santana<br />Studios</h1>
-        <p className={styles.sub}>Capturing the moments that define the game.</p>
-        {/* CTA button — smooth-scrolls down to the gallery section */}
-        <button
-          className={styles.cta}
-          onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          View Portfolio
-        </button>
+        {/* Translucent dark box behind the text for readability */}
+        <div className={styles.textBox}>
+          {/* Small label above the main title */}
+          <p className={styles.tagline}>Sports Photography</p>
+          {/* Main brand name */}
+          <h1 className={styles.title}>Santana<br />Studios</h1>
+          <p className={styles.sub}>Capturing the moments that define the game.</p>
+          {/* CTA button — smooth-scrolls down to the gallery section */}
+          <button
+            className={styles.cta}
+            onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            View Portfolio
+          </button>
+        </div>
       </div>
       {/* Animated vertical line at the bottom hinting the user to scroll down */}
       <div className={styles.scrollHint}>
